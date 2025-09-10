@@ -1,0 +1,8 @@
+C:\Users\w0527459\Documents\HUDv1Project-BenF\HUDv1Project-BenF\bin\Release\HUDv1Project-BenF.exe.config
+C:\Users\w0527459\Documents\HUDv1Project-BenF\HUDv1Project-BenF\bin\Release\HUDv1Project-BenF.exe
+C:\Users\w0527459\Documents\HUDv1Project-BenF\HUDv1Project-BenF\bin\Release\HUDv1Project-BenF.pdb
+C:\Users\w0527459\Documents\HUDv1Project-BenF\HUDv1Project-BenF\obj\Release\HUDv1Project-BenF.csproj.AssemblyReference.cache
+C:\Users\w0527459\Documents\HUDv1Project-BenF\HUDv1Project-BenF\obj\Release\HUDv1Project-BenF.csproj.CoreCompileInputs.cache
+C:\Users\w0527459\Documents\HUDv1Project-BenF\HUDv1Project-BenF\obj\Release\HUDv1Project-BenF.exe
+C:\Users\w0527459\Documents\HUDv1Project-BenF\HUDv1Project-BenF\obj\Release\HUDv1Project-BenF.pdb
+C:\Users\w0527459\Documents\HUDv1Project-BenF\HUDv1Project-BenF\obj\Release\HUDv1Project-BenF.exe.config

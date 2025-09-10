@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Runtime.Remoting.Lifetime;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,25 +10,42 @@ namespace HUDv1Project_BenF
 {
     internal class Program
     {
-        static void Main(string[] args)
-        {
-            //variables
-            string gameName = "Second Controller";
-            string characterName = "Alexa";
-            string studioName = "Frosti Studio";
-            int health = 100;
-            int shield = 0;
-            int score = 0;
-            int lives = 0;
-            float ver = 1.1f;
+        //variables
+        static string gameName = "Second Controller";
+        static string characterName = "Alexa";
+        static string studioName = "Frosti Studio";
+        static int health = 100;
+        static int shield = 0;
+        static int score = 0;
+        static int lives = 0;
+        static float ver = 1.2f;
 
-            //hud
+        static int TakeDamage(int amountofdam)
+        {
+            health -= amountofdam;
+            return health;
+        }
+
+        static int addScore(int points)
+        {
+            score += points;
+            return score;
+        }
+        static void ShowHUD()
+        {
+            
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("{0,0}{1,55}{2,50}", studioName, gameName, $"Ver: {ver}");
             Console.WriteLine(" ");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("{0,0}{1,30}{2,30}{3,30}", $"Lives: {lives}", $"Health: {health}", $"Shield: {shield}", $"Score: {score}");
+        }
+        static void Main(string[] args)
+        {
             
+            //hud
+            ShowHUD();
+
             //start
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Welcome to Second Controller!");
@@ -38,12 +56,8 @@ namespace HUDv1Project_BenF
             //game start
             shield = shield + 50;
             lives = lives + 1;
-            score = score + 100;
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("{0,0}{1,55}{2,50}", studioName, gameName, $"Ver: {ver}");
-            Console.WriteLine(" ");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("{0,0}{1,30}{2,30}{3,30}", $"Lives: {lives}", $"Health: {health}", $"Shield: {shield}", $"Score: {score}");
+            addScore(100);
+            ShowHUD();
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("You make your way into the forest and find a bag. The bag includes 50 shield and 1 life!");
@@ -53,14 +67,10 @@ namespace HUDv1Project_BenF
 
             //event 2
             Console.Clear();
-            health = health / 2;
-            score = score / 2;
+            TakeDamage(50);
+            addScore(-50);
             shield = shield - 50;
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("{0,0}{1,55}{2,50}", studioName, gameName, $"Ver: {ver}");
-            Console.WriteLine(" ");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("{0,0}{1,30}{2,30}{3,30}", $"Lives: {lives}", $"Health: {health}", $"Shield: {shield}", $"Score: {score}");
+            ShowHUD();
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("You were ambushed! You lose your shield and 50 health!");
@@ -69,13 +79,9 @@ namespace HUDv1Project_BenF
 
             //event 3
             Console.Clear();
-            score = score + 2000;
+            addScore(2000);
 
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("{0,0}{1,55}{2,50}", studioName, gameName, $"Ver: {ver}");
-            Console.WriteLine(" ");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("{0,0}{1,30}{2,30}{3,30}", $"Lives: {lives}", $"Health: {health}", $"Shield: {shield}", $"Score: {score}");
+            ShowHUD();
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("You climb the crazy mountain and find a treasure chest. YOUR SCORE RAISES!!!");
@@ -84,14 +90,10 @@ namespace HUDv1Project_BenF
 
             //event 4
             Console.Clear();
-            health = 0;
-            score = score / 4;
+            TakeDamage(50);
+            addScore(-1500);
 
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("{0,0}{1,55}{2,50}", studioName, gameName, $"Ver: {ver}");
-            Console.WriteLine(" ");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("{0,0}{1,30}{2,30}{3,30}", $"Lives: {lives}", $"Health: {health}", $"Shield: {shield}", $"Score: {score}");
+            ShowHUD();
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("You fall off the mountain...wow! You die.");
@@ -101,14 +103,10 @@ namespace HUDv1Project_BenF
 
             //event 5
             Console.Clear();
-            health = 20;
-            score = score + 500;
+            TakeDamage(80);
+            addScore(500);
 
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("{0,0}{1,55}{2,50}", studioName, gameName, $"Ver: {ver}");
-            Console.WriteLine(" ");
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("{0,0}{1,30}{2,30}{3,30}", $"Lives: {lives}", $"Health: {health}", $"Shield: {shield}", $"Score: {score}");
+            ShowHUD();
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("You respawn. You are still falling...but this time a tree catches you! You still lose 80 hp to falling. You jump down from the tree and land on your feet! ");
@@ -118,14 +116,10 @@ namespace HUDv1Project_BenF
 
             //finale
             Console.Clear();
-            health = health - 500000;
-            score = score / 4;
+            TakeDamage(50000);
+            addScore(-1050);
 
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("{0,0}{1,55}{2,50}", studioName, gameName, $"Ver: {ver}");
-            Console.WriteLine(" ");
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("{0,0}{1,30}{2,30}{3,30}", $"Lives: {lives}", $"Health: {health}", $"Shield: {shield}", $"Score: {score}");
+            ShowHUD();
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("You trip on a tree stump and the pain is too unbearable...you die. (Def a skill issue)");
@@ -144,6 +138,5 @@ namespace HUDv1Project_BenF
             Console.ReadKey();
             Console.Clear();
         }
-       
     }
 }
