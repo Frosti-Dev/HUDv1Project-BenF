@@ -103,7 +103,7 @@ namespace HUDv1Project_BenF
 
             //event 5
             Console.Clear();
-            TakeDamage(80);
+            TakeDamage(-20);
             addScore(500);
 
             ShowHUD();
